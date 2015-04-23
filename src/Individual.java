@@ -45,12 +45,21 @@ public class Individual {
 	}// end of getY()
 
 	/**
-	 * Calculate fitness(equation value)
+	 * Calculate equation value
 	 * 
-	 * @return fitness(equation value)
+	 * @return equation value
+	 */
+	public double getValue() {
+		return GA_HW2.equation(x, y);
+	} // end of getValue()
+
+	/**
+	 * Calculate fitness (1/equation value)
+	 * 
+	 * @return fitness (1/equation value)
 	 */
 	public double getFitness() {
-		return GA_HW2.equation(x, y);
+		return 1 / GA_HW2.equation(x, y);
 	} // end of getFitness()
 
 } // end of class Individual
