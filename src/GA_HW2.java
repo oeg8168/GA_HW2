@@ -1,5 +1,12 @@
+/**
+ * GA_HW2 general purpose
+ * 
+ * @author LISM_OEG
+ *
+ */
 public class GA_HW2 {
 
+	public static double maxFitness = 4000;
 	public static double upper = 2.048;
 	public static double lower = -2.048;
 
@@ -27,16 +34,4 @@ public class GA_HW2 {
 		return Math.abs(upper - lower);
 	} // end of getRange()
 
-	public static void main(String[] args) {
-
-		for (int i = 0; i < 100; i++) {
-			System.out.println((int) (Math.random() * 3));
-		}
-
-		// for (double i = -2.048; i < 2.048; i += 0.001) {
-		// System.out.println(equation(i, 2.048));
-		// }
-
-	}
-
-}
+} // end of class GA_HW2
