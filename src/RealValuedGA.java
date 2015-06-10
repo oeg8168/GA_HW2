@@ -20,11 +20,11 @@ public class RealValuedGA {
 	public static ArrayList<Double> avgValue;
 	public static ArrayList<ArrayList<Individual>> pathList;
 
-	public static int maxWorld = 5;
-	public static int maxPopulation = 20;
-	public static int maxGeneration = 100;
-	public static double crossoverRate = 0.80;
-	public static double mutationRate = 0.10;
+	public static int maxWorld = 20;
+	public static int maxPopulation = 50;
+	public static int maxGeneration = 50;
+	public static double crossoverRate = 0.5;
+	public static double mutationRate = 0.1;
 
 	public static int world = 0;
 
@@ -37,7 +37,12 @@ public class RealValuedGA {
 		pathList = new ArrayList<ArrayList<Individual>>();
 
 		for (int i = 0; i < maxPopulation; i++) {
-			populations.add(new Individual());
+			//populations.add(new Individual());
+
+			// Using QuasiRandomSeq
+			double x = QuasiRandomSeq.getOne(2, i) * GA_HW2.getRange() + GA_HW2.lower;
+			double y = QuasiRandomSeq.getOne(5, i) * GA_HW2.getRange() + GA_HW2.lower;
+			populations.add(new Individual(x, y));
 		}
 
 		sortPopulations();
@@ -214,7 +219,7 @@ public class RealValuedGA {
 			FileWriter fw = new FileWriter(outputFolder.getAbsolutePath() + "/" + world + "_pathList.csv");
 			fw.write("x,y,f" + "\r\n");
 			for (int i = 0; i < pathList.size(); i++) {
-				fw.write("Generation " + i * recordInterval + "\r\n");
+				fw.write("#Generation " + i * recordInterval + "\r\n");
 
 				for (Individual individual : pathList.get(i)) {
 					fw.write(individual.getX() + "," + individual.getY() + "," + individual.getValue() + "\r\n");
@@ -243,13 +248,13 @@ public class RealValuedGA {
 		initialize();
 
 		for (int i = 0; i < maxGeneration; i++) {
-			nextGeneration();
-
 			// Record at given interval
 			if (i % recordInterval == 0) {
 				pathList.add(new ArrayList<Individual>(populations));
 				avgValue.add(countAvgValue(populations));
 			}
+
+			nextGeneration();
 		}
 
 		output();

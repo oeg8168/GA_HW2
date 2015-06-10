@@ -59,7 +59,8 @@ public class Individual {
 	 * @return fitness (1/equation value)
 	 */
 	public double getFitness() {
-		return 1 / GA_HW2.equation(x, y);
+		//return 4000-GA_HW2.equation(x, y);
+		return 1 / Math.sqrt(GA_HW2.equation(x, y));
 	} // end of getFitness()
 
 } // end of class Individual

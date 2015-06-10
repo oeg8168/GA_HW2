@@ -40,7 +40,7 @@ public class QuasiRandomSeq {
 	 * @see <a href="http://en.wikipedia.org/wiki/Halton_sequence">
 	 *      http://en.wikipedia.org/wiki/Halton_sequencef </a>
 	 */
-	private static double getOne(int radix, int index) {
+	public static double getOne(int radix, int index) {
 		double result = 0.0;
 		double f = 1.0;
 		double i = index;
